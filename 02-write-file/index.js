@@ -23,7 +23,6 @@ rl.on('line', (input) => {
 
 rl.on('SIGCONT', () => {
   rl.close();
-  writeStream.close(); 
 })
 
 rl.on('close', () => {
