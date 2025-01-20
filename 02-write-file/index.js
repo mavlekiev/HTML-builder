@@ -21,10 +21,6 @@ rl.on('line', (input) => {
   }
 });
 
-rl.on('SIGCONT', () => {
-  rl.close();
-})
-
 rl.on('close', () => {
   console.log('Recording complete. Exit');
   writeStream.close(); 
