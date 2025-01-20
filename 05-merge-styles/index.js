@@ -8,15 +8,15 @@ async function mergeCssFiles() {
   try {
     const files = await fs.readdir(dir);
     const filesCss = files.filter((file) => path.extname(file) === '.css');
-    let bundle = '';
+    const bundle = [];
     
     for (const file of filesCss) {
       const filePath = path.join(dir, file);
       const dataOfFile = await fs.readFile(filePath, 'utf8');
-      bundle += dataOfFile + '\n';
+      bundle.push(dataOfFile);
     }
     
-    await fs.writeFile(fileCss, bundle);
+    await fs.writeFile(fileCss, bundle.join(','));
   } catch (err) {
     console.error('Error ', err)
   }
