@@ -4,7 +4,7 @@ const readline = require('readline');
 
 const filePath = path.join(__dirname, 'text.txt');
 
-const writeStream = fs.createWriteStream(filePath);
+const writeStream = fs.createWriteStream(filePath, 'utf-8');
 
 const rl = readline.createInterface({
   input:process.stdin,
