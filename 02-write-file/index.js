@@ -23,7 +23,7 @@ rl.on('line', (input) => {
 
 rl.on('close', () => {
   console.log('Recording complete. Exit');
-  writeStream.close(); 
+  writeStream.end(); 
 });
 
 
