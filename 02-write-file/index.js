@@ -14,7 +14,7 @@ const rl = readline.createInterface({
 console.log('Enter text or the word "exit" to exit');
 
 rl.on('line', (input) => {
-  if (input.toString().toLowerCase().trim() === 'exit') {
+  if (input.toLowerCase().trim() === 'exit') {
     rl.close();
   } else {
     writeStream.write(input + '\n');
