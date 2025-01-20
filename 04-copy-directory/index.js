@@ -1,30 +1,25 @@
-const readdir = require('node:fs/promises');
-const path = require('node:path');
+const fs = require('fs/promises');
+const path = require('path');
 
 const dirPath = path.join(__dirname, 'files');
 const newDirPath = path.join(__dirname, 'files-copy');
 
 function copyDir() {
-  readdir.mkdir(newDirPath, { recursive: true }).then((result) => {
+  fs.mkdir(newDirPath, { recursive: true }).then((result) => {
     if (!result) {
-      readdir.readdir(newDirPath, { withFileTypes: true }).then((result) => {
+      fs.readdir(newDirPath, { withFileTypes: true }).then((result) => {
         for (const file of result) {
-          readdir.unlink(path.join(newDirPath, file.name));
+          fs.unlink(path.join(newDirPath, file.name));
         }
       });
     }
-    readdir
-      .readdir(dirPath, { withFileTypes: true })
-      .then((result) => {
-        for (const file of result) {
-          if (file.isFile()) {
-            readdir.copyFile(
-              path.join(dirPath, file.name),
-              path.join(newDirPath, file.name),
-            );
-          }
+    fs.readdir(dirPath, { withFileTypes: true }).then((result) => {
+      for (const file of result) {
+        if (file.isFile()) {
+          fs.copyFile(path.join(dirPath, file.name), path.join(newDirPath, file.name));
         }
-      });
+      }
+    });
   });
 }
 
