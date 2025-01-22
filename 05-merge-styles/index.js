@@ -16,7 +16,7 @@ async function mergeCssFiles() {
       bundle.push(dataOfFile);
     }
     
-    await fs.writeFile(fileCss, bundle.join(','));
+    await fs.writeFile(fileCss, bundle.join(''));
   } catch (err) {
     console.error('Error ', err)
   }
